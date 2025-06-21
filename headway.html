@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVision Academy - Transforming Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            100: '#E5E7EB',
+                            200: '#D1D5DB',
+                            300: '#9CA3AF',
+                            400: '#6B7280',
+                            500: '#4B5563',
+                            600: '#374151',
+                            700: '#1F2937',
+                            800: '#111827',
+                            900: '#0F172A',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more specific styling */
+        html{
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../headway/assets/headway.jpg1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #4f46e5;
+            transition: width .3s;
+        }
+        
+        /* Animation for form submission messages */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Fix for select options in dark mode */
+        select, select option {
+            color: inherit;
+        }
+
+        select option {
+            background: white;
+            color: black;
+        }
+
+        .dark select option {
+            background: #1F2937;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-dark-800 dark:text-dark-100">
+    <!-- Dark mode toggle -->
+    <button id="darkModeToggle" class="fixed bottom-4 right-4 bg-indigo-600 dark:bg-indigo-800 text-white p-3 rounded-full shadow-lg z-50">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white dark:bg-dark-700 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- Image Logo -->
+                <img src="assets\Headway Logo.jpg" alt="Headway Logo" class="w-10 h-10 rounded-full object-cover">
+                
+                <!-- Institute Name -->
+                <span class="text-xl font-bold text-blue-600 dark:text-indigo-400">HEADWAY INSTITUTE</span>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-2xl text-gray-700 dark:text-dark-100"></i>
+            </button>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link font-medium text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+                <a href="#enroll" class="nav-link font-medium text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Enroll</a>
+                <a href="#about" class="nav-link font-medium text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
+                <a href="#courses" class="nav-link font-medium text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Courses</a>
+                <a href="#contact" class="nav-link font-medium text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark-700 py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+            <a href="#about" class="block py-2 text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+            <a href="#courses" class="block py-2 text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400">Courses</a>
+            <a href="#contact" class="block py-2 text-gray-700 dark:text-dark-200 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white py-20 md:py-32 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Transform Your Future With Us</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Empowering students through innovative education and hands-on learning experiences.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#courses" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Explore Courses</a>
+                <a href="#contact" class="bg-white hover:bg-gray-100 text-indigo-600 font-bold py-3 px-6 rounded-lg transition duration-300">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white dark:bg-dark-700">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-800 dark:text-indigo-400 mb-4">HEADWAY INSTITUTE</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                         alt="Students learning together" 
+                         class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-dark-100 mb-3">Our Mission</h3>
+                        <p class="text-gray-600 dark:text-dark-300">To provide accessible, high-quality education that equips students with the knowledge, skills, and values needed to succeed in a rapidly changing world.</p>
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-dark-100 mb-3">Our Vision</h3>
+                        <p class="text-gray-600 dark:text-dark-300">To be a leading educational institution recognized for innovation, academic excellence, and commitment to student success.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-dark-100 mb-3">Why Choose Us?</h3>
+                        <ul class="space-y-2 text-gray-600 dark:text-dark-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 dark:text-indigo-400 mt-1 mr-2"></i>
+                                <span>Experienced and dedicated faculty</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 dark:text-indigo-400 mt-1 mr-2"></i>
+                                <span>Hands-on, practical learning approach</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 dark:text-indigo-400 mt-1 mr-2"></i>
+                                <span>Modern facilities and learning resources</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 dark:text-indigo-400 mt-1 mr-2"></i>
+                                <span>Strong industry connections for internships and jobs</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Preview Section -->
+    <section id="courses" class="py-16 bg-gray-50 dark:bg-dark-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-dark-100 mb-4">Our Featured Courses</h2>
+                <p class="text-gray-600 dark:text-dark-300 max-w-2xl mx-auto">Discover our comprehensive range of programs designed to meet the demands of today's job market.</p>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="course-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/image.png" 
+                         alt="Web Development Course" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-dark-100">English course</h3>
+                            <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-dark-300 mb-4">This course is designed to develop learners' ability to communicate effectively in English, following the standards and progression of the British National Curriculum and the Common European Framework of Reference (CEFR).</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 dark:text-indigo-400 font-bold">120$</span>
+                                <span class="text-gray-500 dark:text-dark-400 text-sm ml-1">(12 weeks)</span>
+                            </div>
+                            <!-- <a href="course-web-development.html" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">View Details →</a> --> 
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course Card 2 -->
+                <div class="course-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" 
+                         alt="Data Science Course" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-dark-100 mb-2">Arabic language course</h3>
+                        <p class="text-gray-600 dark:text-dark-300 mb-4">The Arabic language course is carefully designed to develop students' skills in reading, writing, listening, and speaking. It promotes a deep understanding of classical and modern Arabic.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 dark:text-indigo-400 font-bold">$120</span>
+                                <span class="text-gray-500 dark:text-dark-400 text-sm ml-1">(16 weeks)</span>
+                            </div>
+                            <!-- <a href="course-data-science.html" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">View Details →</a> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course Card 3 -->
+                <div class="course-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/photo-1580582932707-520aed937b7b.avif"
+                         alt="Digital Marketing Course" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-dark-100 mb-2">School curriculum grades 1 to 9</h3>
+                        <p class="text-gray-600 dark:text-dark-300 mb-4">Our Grades 1 to 9 curriculum is designed to provide a strong academic foundation, nurture personal growth, and develop critical 21st-century skills.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 dark:text-indigo-400 font-bold">$120</span>
+                                <span class="text-gray-500 dark:text-dark-400 text-sm ml-1">(10 weeks)</span>
+                            </div>
+                            <!-- <a href="course-digital-marketing.html" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">View Details →</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="text-center mt-12">
+                <a href="courses.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    View All Courses <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-indigo-50 dark:bg-dark-700">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-dark-100 mb-4">What Our Students Say</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-dark-800 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="assets/CUSTOMER.jpg" 
+                             alt="Sarah Johnson" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-dark-100">Ali Mohammed</h4>
+                            <p class="text-indigo-600 dark:text-indigo-400 text-sm">He was an English course student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-dark-300">Ali Mohammed was enrolled in the English Language Course at our institute. Throughout his time in the program, Ali demonstrated a strong commitment to improving his language skills across all areas—speaking, listening, reading, and writing. He actively participated in class discussions, completed assignments on time, and showed noticeable progress in fluency and vocabulary development.
+
+Ali was especially eager to engage in conversation practice and consistently sought feedback to enhance his pronunciation and grammar. His positive attitude, discipline, and willingness to learn made him a valued member of the classroom community. By the end of the course, Ali had successfully advanced his English proficiency and was well-prepared to use the language in both academic and professional settings.</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-dark-800 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="assets/abduula.jpg" 
+                             alt="Michael Chen" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-dark-100">Abdulla Muhammad </h4>
+                            <p class="text-indigo-600 dark:text-indigo-400 text-sm">was student in Arabic language course</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-dark-300">"Student Feedback – Abdulla Muhammad
+Abdulla Muhammad has successfully completed the Arabic language course with great dedication and enthusiasm. Throughout the course, he consistently demonstrated a strong commitment to learning and improving his language skills. Abdulla showed remarkable progress in reading, writing, and conversational Arabic. His active participation, respectful attitude, and eagerness to engage in class discussions made him a valuable member of the group. We commend his efforts and wish him continued success in his language-learning journey."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-dark-800 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="assets/agirl.jpg" 
+                             alt="Priya Patel" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-dark-100">Hillen Ahmad </h4>
+                            <p class="text-indigo-600 dark:text-indigo-400 text-sm">computer course</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-dark-300">"Student Feedback –
+Hillen Ahmad has successfully completed the computer course with excellent performance and strong dedication. Throughout the course, she displayed a keen interest in learning various computer skills, including basic operations, software applications, and digital tools. Her ability to grasp new concepts quickly and apply them effectively was impressive. Sara was an active participant in class activities and consistently submitted high-quality work. We are proud of her achievements and confident that she will continue to excel in the field of technology.
+
+</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white dark:bg-dark-700">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-dark-100 mb-4">Contact Us</h2>
+                <p class="text-gray-600 dark:text-dark-300 max-w-2xl mx-auto">Have questions or want to learn more about our programs? Get in touch with our team.</p>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+        <form action="https://formspree.io/f/mblyawwg" method="POST" class="space-y-6 max-w-xl mx-auto p-6 bg-white dark:bg-dark-700 rounded-lg shadow-md">
+  
+  <div>
+    <label for="first-name" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">First Name</label>
+    <input
+      type="text"
+      id="first-name"
+      name="first_name"
+      required
+      class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-dark-800 dark:text-dark-100"
+      placeholder="Your first name"
+    />
+  </div>
+  
+  <div>
+    <label for="last-name" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Last Name</label>
+    <input
+      type="text"
+      id="last-name"
+      name="last_name"
+      required
+      class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-dark-800 dark:text-dark-100"
+      placeholder="Your last name"
+    />
+  </div>
+  
+  <div>
+    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Email Address</label>
+    <input
+      type="email"
+      id="email"
+      name="_replyto"
+      required
+      class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-dark-800 dark:text-dark-100"
+      placeholder="you@example.com"
+    />
+  </div>
+  
+  <div>
+    <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Subject</label>
+    <select
+      id="subject"
+      name="subject"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-dark-800 dark:text-dark-100"
+    >
+      <option value="general">General Inquiry</option>
+      <option value="admissions">Admissions</option>
+      <option value="courses">Course Information</option>
+      <option value="feedback">Feedback</option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-dark-800 dark:text-dark-100"
+      placeholder="Write your message here..."
+    ></textarea>
+  </div>
+  
+  <button
+    type="submit"
+    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+  >
+    Send Message
+  </button>
+  
+</form>
+
+            
+                    <div id="form-message" class="mt-4 hidden"></div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 dark:bg-dark-800 p-6 rounded-lg h-full">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-dark-100 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-indigo-600 dark:text-indigo-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-dark-100">60 street</h4>
+                                    <p class="text-gray-600 dark:text-dark-300">Alla Street<br>NeighBorHood</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-indigo-600 dark:text-indigo-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-dark-100">Phone</h4>
+                                    <p class="text-gray-600 dark:text-dark-300">+964 0750 610 5353<br>+964 0750 610 5252 </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-indigo-600 dark:text-indigo-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-dark-100">Email</h4>
+                                    <p class="text-gray-600 dark:text-dark-300">headway.college21@gmail.com</head></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 dark:text-dark-100 mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.facebook.com/hdwycollege" class="bg-gray-200 dark:bg-dark-600 hover:bg-indigo-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@headway_english_erbil?_t=ZS-8xOWTRTpUhO&_r=1" class="bg-gray-200 dark:bg-dark-600 hover:bg-indigo-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://www.snapchat.com/add/headwaycollege?share_id=jcAX7mKpEHI&locale=en-GB" class="bg-gray-200 dark:bg-dark-600 hover:bg-indigo-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-snapchat"></i>
+                                </a>
+                                <a href="https://wa.me/9647506105252" class="bg-gray-200 dark:bg-dark-600 hover:bg-indigo-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 dark:text-dark-100 mb-4">Location</h4>
+                            <div class="bg-gray-200 dark:bg-dark-600 h-48 rounded-lg overflow-hidden">
+                                <!-- Google Map Embed -->
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3938.2528745826603!2d44.02509922537396!3d36.18368249274605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDExJzAxLjMiTiA0NMKwMDEnNDEuMSJF!5e0!3m2!1sen!2siq!4v1750069055341!5m2!1sen!2siq" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Enrollment Page -->
+    <section id="enroll" class="py-16 bg-gray-50 dark:bg-dark-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8 text-center">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-dark-100 mb-2">Enroll in a Course</h1>
+                    <p class="text-gray-600 dark:text-dark-300">Complete this form to enroll in your desired course</p>
+                </div>
+
+                <div class="bg-white dark:bg-dark-700 rounded-lg shadow-md overflow-hidden">
+                    <div class="md:flex">
+                        <!-- Course Summary -->
+                        <div class="md:w-1/3 bg-indigo-50 dark:bg-dark-800 p-6">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-100 mb-2">Course Details</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-dark-300">
+                                    <li class="flex justify-between">
+                                        <span>Duration:</span>
+                                        <span class="font-medium">2 Months</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Start Date:</span>
+                                        <span class="font-medium">25/6/2025</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Schedule:</span>
+                                        <span class="font-medium">8:30 till 3:30</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Price:</span>
+                                        <span class="font-bold text-indigo-600 dark:text-indigo-400">Depends on Course</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="border-t border-indigo-100 dark:border-dark-600 pt-4">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-100 mb-2">Need Help?</h3>
+                                <p class="text-gray-600 dark:text-dark-300 mb-4">Contact our admissions team for assistance:</p>
+                                <div class="flex items-center text-indigo-600 dark:text-indigo-400">
+                                    <i class="fas fa-phone-alt mr-2"></i>
+                                    <span>0750 610 5353  |  0750 610 5252</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enrollment Form -->
+                        <div class="md:w-2/3 p-6">
+                           <form id="specific-enrollment-form" action="https://formspree.io/f/mblyawwg" method="POST" class="space-y-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label for="first-name" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">First Name *</label>
+      <input type="text" id="first-name" name="first_name" required
+             class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-dark-800 dark:text-dark-100">
+    </div>
+    <div>
+      <label for="last-name" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Last Name *</label>
+      <input type="text" id="last-name" name="last_name" required
+             class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-dark-800 dark:text-dark-100">
+    </div>
+  </div>
+
+  <div>
+    <label for="enroll-email" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Email *</label>
+    <input type="email" id="enroll-email" name="_replyto" required
+           class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-dark-800 dark:text-dark-100">
+  </div>
+
+  <div>
+    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required
+           class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-dark-800 dark:text-dark-100">
+  </div>
+
+  <div>
+    <label for="course-select" class="block text-sm font-medium text-gray-700 dark:text-dark-300 mb-1">Select Course *</label>
+    <select id="course-select" name="course" required
+            class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-dark-800 dark:text-dark-100">
+      <option value="" disabled selected>Select a course</option>
+      <option value="English language course">English language course</option>
+      <option value="Arabic language Course">Arabic language Course</option>
+      <option value="School curriculum grades 1 to 9">School curriculum grades 1 to 9</option>
+      <option value="Turkish language course">Turkish language course</option>
+      <option value="German language Course">German language Course</option>
+      <option value="Computer Course">Computer Course</option>
+    </select>
+  </div>
+
+  <!-- Terms checkbox -->
+  <div class="pt-2">
+    <div class="flex items-start">
+      <input type="checkbox" id="terms" name="terms" required class="mt-1 mr-2">
+      <label for="terms" class="text-sm text-gray-700 dark:text-dark-300">
+        I agree to the <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Terms & Conditions</a> and <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Privacy Policy</a>
+      </label>
+    </div>
+  </div>
+
+  <!-- Hidden inputs for Formspree -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <div class="pt-4">
+    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+      Complete Enrollment
+    </button>
+  </div>
+</form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-dark-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                       <img src="assets\Headway Logo.jpg" alt="Headway Logo" class="w-10 h-10 rounded-full object-cover">
+                        <span class="text-xl font-bold">HEADWAY INSTITUTE</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering students through innovative education and hands-on learning experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/hdwycollege" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@headway_english_erbil?_t=ZS-8xOWTRTpUhO&_r=1" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.snapchat.com/add/headwaycollege?share_id=jcAX7mKpEHI&locale=en-GB" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-snapchat"></i>
+                        </a>
+                        <a href="https://wa.me/9647506105252" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#courses" class="text-gray-400 hover:text-white transition">Courses</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#enroll" class="text-gray-400 hover:text-white transition">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Courses</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">English Language</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Arabic Language</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">School Curriculum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Turkish Language</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">German Language</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>60 street, Alla Street, behind par hospital </span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                            <span>+964 0750 610 5353</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>headway.college21@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3"></i>
+                            <span>sun-Thr: 9am - 3pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 HEADWAY INSTITUTE. All rights reserved.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // // Form submission handling
+        // document.getElementById('contact').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     const formMessage = document.getElementById('form-message');
+            
+        //     // Simulate form submission
+        //     setTimeout(() => {
+        //         formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+        //         formMessage.className = 'mt-4 p-4 bg-green-100 text-green-700 rounded-lg fade-in';
+        //         formMessage.classList.remove('hidden');
+        //         this.reset();
+                
+        //         // Hide message after 5 seconds
+        //         setTimeout(() => {
+        //             formMessage.classList.add('hidden');
+        //         }, 5000);
+        //     }, 1000);
+        // });
+        
+        // // Enrollment form handling
+        // document.getElementById('specific-enrollment-form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     const enrollMessage = document.createElement('div');
+        //     enrollMessage.textContent = 'Your enrollment has been submitted successfully! Our admissions team will contact you shortly.';
+        //     enrollMessage.className = 'mt-4 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-lg fade-in';
+            
+        //     const formContainer = this.parentElement;
+        //     formContainer.appendChild(enrollMessage);
+            
+        //     this.reset();
+            
+        //     // Hide message after 5 seconds
+        //     setTimeout(() => {
+        //         enrollMessage.remove();
+        //     }, 5000);
+        // });
+
+
+        // Check for saved user preference or system preference
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+
+        // Dynamic pricing based on course selection
+        document.getElementById('course-select').addEventListener('change', function() {
+            const prices = {
+                'English language course': 120,
+                'Arabic language Course': 120,
+                'School curriculum grades 1 to 9': 120,
+                'Turkish language course': 120,
+                'German language Course': 120,
+                'Computer Course': 120
+            };
+            
+            const selectedCourse = this.value;
+            if (selectedCourse && prices[selectedCourse]) {
+                const fullPayment = prices[selectedCourse];
+                const installment = Math.ceil(fullPayment / 3);
+                
+                const paymentPlan = document.getElementById('payment-plan');
+                paymentPlan.innerHTML = `
+                    <option value="full">Full Payment ($${fullPayment})</option>
+                    <option value="installment">Installment Plan (3 x $${installment})</option>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
