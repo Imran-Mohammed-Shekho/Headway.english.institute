@@ -44,7 +44,7 @@ headway-institute/
 Clone the repository
 
 sh
-git clone https://github.com/your-username/headway-institute.git
+git clone https://github.com/Imran-Mohammed-Shekho/headway-institute.git
 cd headway-institute
 Open in a browser
 
